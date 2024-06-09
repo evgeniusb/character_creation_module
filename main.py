@@ -1,4 +1,7 @@
+"""Консольна игра с выбором одного из трёх персонажей."""
+
 from random import randint
+
 # Новый импорт.
 # Из модуля start_game_banner, который расположен в папке graphic_arts,
 # импортируем функцию run_screensaver().
@@ -6,6 +9,10 @@ from graphic_arts.start_game_banner import run_screensaver
 
 
 def attack(char_name: str, char_class: str) -> str:
+    """Метод attack вычисляет нанесенный урон для выбранного персонажа.
+    Урон вычисляется случайным образом функцией randint c диапазонами,
+    соответствующими выбранному персонажу.
+    """
     if char_class == 'warrior':
         return (f'{char_name} нанёс противнику урон, равный '
                 f'{5 + randint(3, 5)}')
@@ -18,6 +25,10 @@ def attack(char_name: str, char_class: str) -> str:
 
 
 def defence(char_name: str, char_class: str) -> str:
+    """Метод defence вычисляет урон, который отразил выбранный персонаж.
+    Аналогично методу attack используется функция randint с релевантными
+    интервалами случайных величин.
+    """
     if char_class == 'warrior':
         return (f'{char_name} блокировал {10 + randint(5, 10)} урона')
     if char_class == 'mage':
@@ -27,6 +38,11 @@ def defence(char_name: str, char_class: str) -> str:
 
 
 def special(char_name: str, char_class: str) -> str:
+    """Метод special.
+    Уведомляет, что выбранный персонаж применил свое специальное
+    умение: воин - выносливость, маг - атаку, лекарь - защиту.
+    Состояния каждого песонажа изменяются всегда на одно и то же значение.
+    """
     if char_class == 'warrior':
         return (f'{char_name} применил специальное умение «Выносливость '
                 f'{80 + 25}»')
@@ -37,6 +53,11 @@ def special(char_name: str, char_class: str) -> str:
 
 
 def start_training(char_name: str, char_class: str) -> str:
+    """Метод start_training.
+    Сначала рассказывает игроку о выбранном персонаже и его
+    отличительных качествах, затем предлагается потренироваться в атаке,
+    защите или применении суперсилы.
+    """
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
     if char_class == 'mage':
@@ -61,6 +82,10 @@ def start_training(char_name: str, char_class: str) -> str:
 
 
 def choice_char_class() -> str:
+    """Метод choice_char_class выводит диалог выбора персонажа.
+    После получения значения от пользователя следует краткая характеристика.
+    В конце есть возможность изменить свой выбор, либо подтвердить его.
+    """
     approve_choice: str = ''
     char_class: str = ''
     while approve_choice != 'y':
